@@ -6,28 +6,44 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>№4 Data Types</h1>
+    <h1>№5 Operators</h1>
 
     <script>
-        let someText = "whazzup";
-        console.log(typeof someText);
-        let someNumber = 42;
-        console.log(typeof someNumber);
-        let trueBeTrue = false;
-        console.log(typeof trueBeTrue);
-        let Who;
-        console.log(typeof Who);
-        let zero = null;
-        console.log(typeof zero);
 
-        /* 
-        Примитивные типы данных - это текст, число, булевы данные, неопределенные(без заданного значения) и нуль(без значения так такового). 
-            Переменные имеют свои разные ячейки с данными и изменение значения в одной не повлиет на значения в другой.
-    
-        Ссылочные - это объекты, массивы и функции. 
-            Два объекта ссылаются к одному и тому же месту, соответственно и изменения в одном объекте повлияют на другой.
-                
+        let num1 = 10;
+            console.log(num1 % 2)
+        let num2 = 5;
+            console.log(num2 % 2)
+        let num3 = 11;
+            console.log(num3 % 2)
+        let num4 = 22;
+            console.log(num4 % 2)
+        /*
+        Додумался только до такого решения, не знаю как без функции сделать это более компактнее
+        и чтобы в консоль сразу выводилось что это за число и четное оно или нет.
         */
+        let name
+
+        console.log(name ?? 'Hello, Guest!');
+
+        name = "Ray";
+
+        console.log("Hello, " + name + "!" ?? 'Hello, Guest!');
+        //В таком виде всё работает
+
+        /*
+        let name
+
+        name = "Ray";
+
+        console.log("Hello, " + name + "!" ?? 'Hello, Guest!');
+        
+
+        Если пытаюсь прописать всё сразу и уберу значение у "name", то вместо "Hello, Guest!", выводит в консоль 
+        "Hello, undefined!"
+        Не понимаю почему. Можете ещё разобрать как это можно было бы прописать с помощью функции.
+        */
+
     </script>
 </body>
 </html>
