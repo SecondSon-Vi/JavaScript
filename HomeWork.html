@@ -6,44 +6,139 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>№5 Operators</h1>
+    <h1>№7 If Else</h1>
 
     <script>
 
-        let num1 = 10;
-            console.log(num1 % 2)
-        let num2 = 5;
-            console.log(num2 % 2)
-        let num3 = 11;
-            console.log(num3 % 2)
-        let num4 = 22;
-            console.log(num4 % 2)
-        /*
-        Додумался только до такого решения, не знаю как без функции сделать это более компактнее
-        и чтобы в консоль сразу выводилось что это за число и четное оно или нет.
-        */
-        let name
+        1./*
+            let a = prompt('Введи число');
 
-        console.log(name ?? 'Hello, Guest!');
+            if(a >= 1) {
+                console.log('Число Положительное!');
+            } else if (a == 0) {
+                console.log('Число является Нулем!');
+            } else if (a <= -1)  {
+                console.log('Число является Отрицательным!');
+            }
+*/
+        2.
+            /*
+            let h = prompt('Введи рост');
+            let w = prompt('Введи вес');
+            */
+           
+            let h = 150;
+            let w = 90;
+            
+            let bodyMassIndex = w/(h*2/100);
+            console.log("Ваш ИМТ " + bodyMassIndex)
 
-        name = "Ray";
+            if (bodyMassIndex <= 16) {
+                console.log('Выраженный дефицит массы тела');
+            } else if (bodyMassIndex <= 16-18,5) {
+                console.log('Недостаточная масса тела');
+            } else if (bodyMassIndex <= 18,5-25) {
+                console.log('Норма');
+            } else if (bodyMassIndex <= 25-30) {
+                console.log('Избыточная масса тела (предожирение)');
+            } else if (bodyMassIndex <= 30-35) {
+                console.log('Ожирение первой степени');
+            } else if (bodyMassIndex <= 35-40) {
+                console.log('Ожирение второй степени');
+            }
+            /*Не понимаю почему в консоль выводится только первое или второе сообщение, независимо 
+                от значения имт. Другие сообщения не срабатывают пока не удалю первые два.
 
-        console.log("Hello, " + name + "!" ?? 'Hello, Guest!');
-        //В таком виде всё работает
+            Также такой вопрос, всё ли верно с синтаксисом в (bodyMassIndex <= 16-18,5) и ему подобных. 
+                Как правильно сделать значение переменной от одного числа до другого, т.е. от 16,5 до 18???
+            */
+        3./*
+            let mounth = 7;
+            let mounthName;
 
-        /*
-        let name
+            switch(mounth) {
+                case 1:
+                    mounthName = 'It`s January';
+                    break;
 
-        name = "Ray";
+                case 2:
+                    mounthName = 'It`s February';
+                    break;
+                
+                case 3:
+                    mounthName = 'It`s March';
+                    break;
 
-        console.log("Hello, " + name + "!" ?? 'Hello, Guest!');
+                case 4:
+                    mounthName = 'It`s April';
+                    break;
+                
+                case 5:
+                    mounthName = 'It`s May';
+                    break;
+
+                case 6:
+                    mounthName = 'It`s June';
+                    break;
+                
+                case 7:
+                    mounthName = 'It`s July';
+                    break;
+
+                case 8:
+                    mounthName = 'It`s August';
+                    break;
+
+                case 9:
+                    mounthName = 'It`s September';
+                    break;
+
+                case 10:
+                    mounthName = 'It`s October';
+                    break;
+                
+                case 11:
+                    mounthName = 'It`s November';
+                    break;
+
+                case 12:
+                    mounthName = 'It`s December';
+                    break;
+                
+                default:
+                    mounthName = 'It`s Wrong Mounth';
+            }
+
+            console.log(mounthName);
+*/
+        4. 
         
+            let ticket;
 
-        Если пытаюсь прописать всё сразу и уберу значение у "name", то вместо "Hello, Guest!", выводит в консоль 
-        "Hello, undefined!"
-        Не понимаю почему. Можете ещё разобрать как это можно было бы прописать с помощью функции.
-        */
+            ticket = prompt(`У Вас есть билет? (Введите Да/Нет)`);
 
+            if (ticket === 'Да') {
+                console.log('Пожалуйста проходите');
+            } else  {
+                console.log('Пройдите в кассу');
+            }
+        /*
+        
+        let tea;
+
+        tea = prompt('Do you like tea with milk?');
+
+
+        if (tea === "Yes") {
+            console.log(`That's great`);
+        } else {
+            console.log('such a dissapointment');
+        }
+       */
+        
+       /*Что в примере выше, что в закомментированном, не понял как сделать чтобы при вводе
+            данных можно было писать значение не только через заглавную букву. (чтоб подходило: yes, Yes, YeS и.т.п)
+            */
     </script>
 </body>
 </html>
