@@ -9,8 +9,8 @@
     <h1>№7 If Else</h1>
 
     <script>
-
-        1./*
+        
+        1.
             let a = prompt('Введи число');
 
             if(a >= 1) {
@@ -20,39 +20,29 @@
             } else if (a <= -1)  {
                 console.log('Число является Отрицательным!');
             }
-*/
+
         2.
-            /*
             let h = prompt('Введи рост');
             let w = prompt('Введи вес');
-            */
-           
-            let h = 150;
-            let w = 90;
-            
-            let bodyMassIndex = w/(h*2/100);
+
+            let bodyMassIndex =  w / ((h / 100) ** 2);
             console.log("Ваш ИМТ " + bodyMassIndex)
 
             if (bodyMassIndex <= 16) {
                 console.log('Выраженный дефицит массы тела');
-            } else if (bodyMassIndex <= 16-18,5) {
+            } else if (bodyMassIndex >= 16 && bodyMassIndex <= 18.5) {
                 console.log('Недостаточная масса тела');
-            } else if (bodyMassIndex <= 18,5-25) {
+            } else if (bodyMassIndex >= 18.5 && bodyMassIndex <= 25) {
                 console.log('Норма');
-            } else if (bodyMassIndex <= 25-30) {
+            } else if (bodyMassIndex >= 25 && bodyMassIndex <= 30) {
                 console.log('Избыточная масса тела (предожирение)');
-            } else if (bodyMassIndex <= 30-35) {
+            } else if (bodyMassIndex >= 30 && bodyMassIndex <= 35) {
                 console.log('Ожирение первой степени');
-            } else if (bodyMassIndex <= 35-40) {
+            } else if (bodyMassIndex >= 35 && bodyMassIndex <= 40) {
                 console.log('Ожирение второй степени');
             }
-            /*Не понимаю почему в консоль выводится только первое или второе сообщение, независимо 
-                от значения имт. Другие сообщения не срабатывают пока не удалю первые два.
-
-            Также такой вопрос, всё ли верно с синтаксисом в (bodyMassIndex <= 16-18,5) и ему подобных. 
-                Как правильно сделать значение переменной от одного числа до другого, т.е. от 16,5 до 18???
-            */
-        3./*
+            
+        3.
             let mounth = 7;
             let mounthName;
 
@@ -110,35 +100,32 @@
             }
 
             console.log(mounthName);
-*/
+
         4. 
-        
+
             let ticket;
+            ticket = prompt(`У Вас есть билет?`);
 
-            ticket = prompt(`У Вас есть билет? (Введите Да/Нет)`);
+            ticket = ticket.toLowerCase();
 
-            if (ticket === 'Да') {
-                console.log('Пожалуйста проходите');
-            } else  {
+            if (ticket === 'да') {
+                console.log('Пожалуйста проходите')
+            }    else  {
                 console.log('Пройдите в кассу');
             }
-        /*
-        
-        let tea;
+                
 
-        tea = prompt('Do you like tea with milk?');
+            let tea;
+            tea = prompt('Do you like tea with milk?');
 
+            tea = tea.toLowerCase();
 
-        if (tea === "Yes") {
-            console.log(`That's great`);
-        } else {
-            console.log('such a dissapointment');
-        }
-       */
-        
-       /*Что в примере выше, что в закомментированном, не понял как сделать чтобы при вводе
-            данных можно было писать значение не только через заглавную букву. (чтоб подходило: yes, Yes, YeS и.т.п)
-            */
+            if (tea === 'yes') {
+                console.log(`That's great`);
+            } else {
+                console.log('such a dissapointment');
+            }
+
     </script>
 </body>
 </html>
