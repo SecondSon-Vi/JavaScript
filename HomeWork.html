@@ -6,43 +6,49 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>№8 For While</h1>
+    <h1>№9 data types</h1>
 
     <script>
 
         1.
-
-            for (let i = 0; i < 12; i++) {
-                    console.log(i);
-            } 
+            let text = "JavaScript is fun!";
+            if (text.includes("fun")); {
+                console.log("There is a fun in JavaScript")
+            }
 
         2.
-
-            let sum = 0;
-            let i = 1;
-            while (i <= 100) {
-                sum += i;
-                i++
-            }
-            console.log(sum)
-
-
-        3.
-        
-            for (let i = 2; i <= 100; i++) {
-                let isPrime = true;
-                for (let j = 2; j < i; j++) {
-                    if (i % j === 0) {
-                        isPrime = false;
-                        break;
-                    }
-                }
-                if (isPrime) {
-                    console.log(i)
-                }
-                    
+            let e;
+            e = prompt("do not type anything!!!");
+            if(e === '') {
+                console.log("FALSY")
+            }       else {
+                console.log("Not a FALSY")
             }
             
+            // Как можно осуществить алгоритм для проверки на все falsy значения???
+
+        3.
+            let firstName = "Delsin";
+            let lastName = "Rowe";
+            let occupation = "FrontEnd Developer";
+
+            let greetings = `Hello, my name is ${firstName} ${lastName}. I am a ${occupation}`;
+
+            console.log(greetings)
+        4.
+            const n = null;
+            const def = undefined;
+
+            console.log(n === def) //   false потому что это разные типы данных, null считается объектом, так исторически сложилось...
+            console.log(n == def) //    true, так как значения пытаются привести к одному типу данных
+
+        5.
+            let a = 1;
+            let b = '1';
+            console.log(a + b)
+            /* значение выражения приводится к строке, если мы используем "+" и когда один из операндов является строкой */
+
+
     </script>
 </body>
 </html>
