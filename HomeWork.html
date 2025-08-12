@@ -6,49 +6,60 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>№9 data types</h1>
+    <h1>№10 Arrays</h1>
 
     <script>
 
         1.
-            let text = "JavaScript is fun!";
-            if (text.includes("fun")) {
-                console.log("There is a fun in JavaScript")
-            }
-
+            const numbers = [2, 3, 4, 5, 6, 7];
+            const doubled = numbers.map(num => num*num);
+            console.log(doubled);
         2.
-            let userInput;
-            userInput = prompt("do not type anything!!!");
-            if(!userInput) {
-                console.log("Not a FALSY")
-            }       else {
-                console.log("FALSY")
-            }
-            
-            
+        /*
+            const repeated = [1, 2, 3, 3, 10, 10, 10, 15, 16, 17, 18, 18];
+            const filtered = repeated.filter();
+            console.log(filtered)
+        */
+            const repeated = [1, 2, 3, 3, 10, 10, 10, 15, 16, 17, 18, 18];
+            const filtered = [...new Set(repeated)];
+            console.log(filtered)
 
+            //загуглив узнал про "set", но хотел бы знать как ещё можно решить это задание
         3.
-            let firstName = "Delsin";
-            let lastName = "Rowe";
-            let occupation = "FrontEnd Developer";
+            const array = [1, 2, 5, 9, 12];
+            const sum = array.reduce((total, num) => total + num, 0);
+            console.log(sum);
 
-            let greetings = `Hello, my name is ${firstName} ${lastName}. I am a ${occupation}`;
-
-            console.log(greetings)
+            // Не понимаю что за значения в скобках, в чем логика и функция
         4.
-            const n = null;
-            const def = undefined;
+            const simple = [99, 64, 45, 32, 12, 7];
+            const reversed = simple.sort();
+            console.log(reversed);
 
-            console.log(n === def) //   false потому что это разные типы данных, null считается объектом, так исторически сложилось...
-            console.log(n == def) //    true, так как значения пытаются привести к одному типу данных
+            // С числами сортировка не сработала, т.к. семерка не встает первой, а вот со строчным элементом сортировка пошла по первой букве.
 
+            const simple2 = ["Work", "Shop", "Read", "Book", "Car", "Apple" ];
+            const reversed2 = simple2.sort();
+            console.log(reversed2);
         5.
-            let a = 1;
-            let b = '1';
-            console.log(a + b)
-            /* значение выражения приводится к строке, если мы используем "+" и когда один из операндов является строкой */
+            let a = "down";
+            const b = "up";
+            console.log(a, b);
 
+            a = "slowDown";
+            /* b = "upForward"; */
+            console.log(a, b);
+            // нельзя присвоить новое значение переменной, объявленной как константа
 
+            let arrayA = [1, 2, 3, 4, 5];
+            let arrayB = [5, 6, 7, 8, 9];
+            console.log(arrayA, arrayB);
+
+            arrayA.reverse(arrayA);
+            arrayB.splice(0, 2, 11, 22);
+            console.log(arrayA, arrayB)
+
+            //Но если константа - это объект(а массив это объект), то её значения можно изменять
     </script>
 </body>
 </html>
