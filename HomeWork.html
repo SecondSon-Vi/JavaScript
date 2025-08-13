@@ -15,11 +15,6 @@
             const doubled = numbers.map(num => num*num);
             console.log(doubled);
         2.
-        /*
-            const repeated = [1, 2, 3, 3, 10, 10, 10, 15, 16, 17, 18, 18];
-            const filtered = repeated.filter();
-            console.log(filtered)
-        */
             const repeated = [1, 2, 3, 3, 10, 10, 10, 15, 16, 17, 18, 18];
             const filtered = [...new Set(repeated)];
             console.log(filtered)
@@ -30,13 +25,10 @@
             const sum = array.reduce((total, num) => total + num, 0);
             console.log(sum);
 
-            // Не понимаю что за значения в скобках, в чем логика и функция
         4.
             const simple = [99, 64, 45, 32, 12, 7];
-            const reversed = simple.sort();
+            const reversed = simple.sort((a, b) => a - b)
             console.log(reversed);
-
-            // С числами сортировка не сработала, т.к. семерка не встает первой, а вот со строчным элементом сортировка пошла по первой букве.
 
             const simple2 = ["Work", "Shop", "Read", "Book", "Car", "Apple" ];
             const reversed2 = simple2.sort();
