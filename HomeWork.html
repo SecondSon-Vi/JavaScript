@@ -6,52 +6,72 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>№10 Arrays</h1>
+    <h1>№11 Spread & Rest</h1>
 
     <script>
 
         1.
-            const numbers = [2, 3, 4, 5, 6, 7];
-            const doubled = numbers.map(num => num*num);
-            console.log(doubled);
+            function sum(...numbers) {
+                    return numbers.reduce((acc, num) => acc + num, 0);
+                }
+
+            console.log(sum(1, 2, 3, 4, 5)/5); 
+                
+            /*по-прежнему не очень понимаю синтаксиса функций, но сначала мы считаем сумму, затем делим на количество чисел
+                т.е. должна быть примерная конструкция - "sum / numbers.length;", но я не очень понимаю как её реализовать
+            */
         2.
-            const repeated = [1, 2, 3, 3, 10, 10, 10, 15, 16, 17, 18, 18];
-            const filtered = [...new Set(repeated)];
-            console.log(filtered)
 
-            //загуглив узнал про "set", но хотел бы знать как ещё можно решить это задание
+            let profile = {name: 'Ray', age: 24, country: 'Russia'};
+            let {name, age, country} = profile;
+            console.log(profile);
+
+            // Опять же, не смог реализовать это в формате функции
+        
         3.
-            const array = [1, 2, 5, 9, 12];
-            const sum = array.reduce((total, num) => total + num, 0);
-            console.log(sum);
+            let person = {
+                firstName: 'Ray',
+                address: {
+                    city: 'Wippuri',
+                    zip: '188800'
+                },
+                spareTime: ["monday", "wednesday", "weekends"],
+                
+            };
 
+            let {firstName, address: { city, zip }, spareTime: {first, second, third}} = person;  
+
+            console.log(person);
+            /*const { name, address: { city, zip } } = person;*/
         4.
-            const simple = [99, 64, 45, 32, 12, 7];
-            const reversed = simple.sort((a, b) => a - b)
-            console.log(reversed);
+            // Добавил элементы, используя push и splice.
 
-            const simple2 = ["Work", "Shop", "Read", "Book", "Car", "Apple" ];
-            const reversed2 = simple2.sort();
-            console.log(reversed2);
+            let ogArray = [1, 2, 3, 4, 5];
+
+            ogArray.push(20);
+            ogArray.splice(0, 1, 10); 
+
+            console.log(ogArray);
+
+            
+            // Добавил эл-ты, используя spread
+
+            let array1 = ['a', 'b', 'c'];
+            let array2 = [1, 2, 3];
+            let array3 = [4, 5, 6];
+            let combinedArray = [...array2, ...array1, ...array3];
+
+            console.log(combinedArray); 
         5.
-            let a = "down";
-            const b = "up";
-            console.log(a, b);
 
-            a = "slowDown";
-            /* b = "upForward"; */
-            console.log(a, b);
-            // нельзя присвоить новое значение переменной, объявленной как константа
+            let user = { nickName: 'Alice', age: 25, country: 'USA' };
+            let { nickName, ...rest } = user;
+            
+            console.log(nickName);
+            console.log(rest);
 
-            let arrayA = [1, 2, 3, 4, 5];
-            let arrayB = [5, 6, 7, 8, 9];
-            console.log(arrayA, arrayB);
+            // Не совсем понял как реализовать это в формате функции
 
-            arrayA.reverse(arrayA);
-            arrayB.splice(0, 2, 11, 22);
-            console.log(arrayA, arrayB)
-
-            //Но если константа - это объект(а массив это объект), то её значения можно изменять
     </script>
 </body>
 </html>
