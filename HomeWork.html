@@ -9,24 +9,23 @@
     <h1>№11 Spread & Rest</h1>
 
     <script>
-
+        
         1.
             function sum(...numbers) {
-                    return numbers.reduce((acc, num) => acc + num, 0);
+                    return numbers.reduce((acc, num) => acc + num, 0)/numbers.length;
                 }
+               
+            console.log(sum(1, 2, 3, 4, 5));
 
-            console.log(sum(1, 2, 3, 4, 5)/5); 
-                
-            /*по-прежнему не очень понимаю синтаксиса функций, но сначала мы считаем сумму, затем делим на количество чисел
-                т.е. должна быть примерная конструкция - "sum / numbers.length;", но я не очень понимаю как её реализовать
-            */
         2.
+            function showProfile({ name, age, country }) {
+                console.log(`Name: ${name}, Age: ${age}, Country: ${country}`);
+            }
 
-            let profile = {name: 'Ray', age: 24, country: 'Russia'};
-            let {name, age, country} = profile;
-            console.log(profile);
+            let profile = { name: 'Ray', age: 24, country: 'Russia' };
+            showProfile(profile); 
 
-            // Опять же, не смог реализовать это в формате функции
+          // т.е используя здесь деструкторизацию мы выводим данные из объекта?
         
         3.
             let person = {
@@ -39,10 +38,11 @@
                 
             };
 
-            let {firstName, address: { city, zip }, spareTime: {first, second, third}} = person;  
+            let {firstName, address: { city, zip } }= person;
+            let {spareTime: [first, second, third]} = person;  
 
             console.log(person);
-            /*const { name, address: { city, zip } } = person;*/
+
         4.
             // Добавил элементы, используя push и splice.
 
@@ -62,15 +62,17 @@
             let combinedArray = [...array2, ...array1, ...array3];
 
             console.log(combinedArray); 
+        
         5.
+            function showUser({ nickName, ...rest }){
+                return console.log(`nickName: ${nickName}`),
+                console.log(`rest: ${age}, ${country}`) 
+            }
 
             let user = { nickName: 'Alice', age: 25, country: 'USA' };
-            let { nickName, ...rest } = user;
-            
-            console.log(nickName);
-            console.log(rest);
+            showUser(user);
 
-            // Не совсем понял как реализовать это в формате функции
+            // Не понимаю почему не определяются параметры age & country
 
     </script>
 </body>
