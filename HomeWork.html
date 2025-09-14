@@ -66,14 +66,12 @@
         5.
             function showUser({ nickName, ...rest }){
                 return console.log(`nickName: ${nickName}`),
-                console.log(`rest: ${age}, ${country}`) 
+                console.log(`rest: ${rest.age}, ${rest.country}`) 
             }
 
             let user = { nickName: 'Alice', age: 25, country: 'USA' };
             showUser(user);
-
-            // Не понимаю почему не определяются параметры age & country
-
+            
     </script>
 </body>
 </html>
