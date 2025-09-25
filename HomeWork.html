@@ -10,68 +10,74 @@
 
     <script>
         
+
+        /*
+            // почему в первом случае вместе с сообщением выводится undefined ???
+
+            let user = "Rose";
+            let message = "Hello";
+
+            function showMessage (user, message) {
+                return console.log(message + ', ' + user + '!')
+          }
+
+            console.log(showMessage("Rose", "Hello"));
+
+            //
+
+            function greet(name) {
+                return `Hello, ${name}!`;
+            }
+
+            console.log(greet('Alice')); 
+        */
+
+
         1.
-            function sum(...numbers) {
-                    return numbers.reduce((acc, num) => acc + num, 0)/numbers.length;
-                }
-               
-            console.log(sum(1, 2, 3, 4, 5));
+           
+            
+           
+
 
         2.
-            function showProfile({ name, age, country }) {
-                console.log(`Name: ${name}, Age: ${age}, Country: ${country}`);
-            }
-
-            let profile = { name: 'Ray', age: 24, country: 'Russia' };
-            showProfile(profile); 
-
-          // т.е используя здесь деструкторизацию мы выводим данные из объекта?
+           
         
         3.
-            let person = {
-                firstName: 'Ray',
-                address: {
-                    city: 'Wippuri',
-                    zip: '188800'
-                },
-                spareTime: ["monday", "wednesday", "weekends"],
-                
-            };
-
-            let {firstName, address: { city, zip } }= person;
-            let {spareTime: [first, second, third]} = person;  
-
-            console.log(person);
-
-        4.
-            // Добавил элементы, используя push и splice.
-
-            let ogArray = [1, 2, 3, 4, 5];
-
-            ogArray.push(20);
-            ogArray.splice(0, 1, 10); 
-
-            console.log(ogArray);
-
+            //createPhoneNumber(123456789) → 8 (123) 456-789;
+            /*
+            function createPhoneNumber(phoneNumber) {
+                return( `Your number is: ` + `(8)-(xxx)-(xx)-(xx)`)
+           }
+           
+           console.log(createPhoneNumber(89215625242))
+           */
+          
+            /* Пытаюсь понять можно ли это осуществить через деструкторизацию
+            К примеру, есть массив чисел [89218985414], его можно деструкторизовать под номер, а номер - это 11 чисел:
+            вводное - 8, код оператора - 921; сам номер абонента(rest) - 8985414;
             
-            // Добавил эл-ты, используя spread
+            Что-то вроде этого:
 
-            let array1 = ['a', 'b', 'c'];
-            let array2 = [1, 2, 3];
-            let array3 = [4, 5, 6];
-            let combinedArray = [...array2, ...array1, ...array3];
+            let numberArray = [89218985414];
+            let [a, b, c, d, e, f, g, h, i, j, k] = numberArray;
 
-            console.log(combinedArray); 
-        
-        5.
-            function showUser({ nickName, ...rest }){
-                return console.log(`nickName: ${nickName}`),
-                console.log(`rest: ${rest.age}, ${rest.country}`) 
+            function createPhoneNumber(numberArray) {
+                return(console.log((a)-(b, c, d)-(e, f, g)-(h, i)-(j, k)))
             }
 
-            let user = { nickName: 'Alice', age: 25, country: 'USA' };
-            showUser(user);
-            
+            console.log(createPhoneNumber(numberArray))
+
+            Только не понимаю как это упростить, например разбить номер на 3 части; 
+            указать что a - это первая цифра, b - код оператора, c - номер абонента;
+            */
+
+        4.
+    
+        
+        5.
+
+
+
     </script>
 </body>
 </html>
