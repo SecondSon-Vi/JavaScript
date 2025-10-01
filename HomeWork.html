@@ -9,75 +9,133 @@
     <h1>№11 Spread & Rest</h1>
 
     <script>
-        
-
-        /*
-            // почему в первом случае вместе с сообщением выводится undefined ???
-
-            let user = "Rose";
-            let message = "Hello";
-
-            function showMessage (user, message) {
-                return console.log(message + ', ' + user + '!')
-          }
-
-            console.log(showMessage("Rose", "Hello"));
-
-            //
-
-            function greet(name) {
-                return `Hello, ${name}!`;
-            }
-
-            console.log(greet('Alice')); 
-        */
 
 
         1.
-           
-            
-           
+        /*
+            // вариант из сети, где сравнивается строка оригинальная и перевернутая. Он рабочий.
 
+            function isPalindrome(str) {
+            // 1. Приводим строку к нижнему регистру и удаляем все не буквенно-цифровые символы.
+            const cleanedStr = str.toLowerCase().replace(/[^a-zа-я0-9]/g, '');
 
-        2.
-           
-        
-        3.
-            //createPhoneNumber(123456789) → 8 (123) 456-789;
-            /*
-            function createPhoneNumber(phoneNumber) {
-                return( `Your number is: ` + `(8)-(xxx)-(xx)-(xx)`)
-           }
-           
-           console.log(createPhoneNumber(89215625242))
-           */
-          
-            /* Пытаюсь понять можно ли это осуществить через деструкторизацию
-            К примеру, есть массив чисел [89218985414], его можно деструкторизовать под номер, а номер - это 11 чисел:
-            вводное - 8, код оператора - 921; сам номер абонента(rest) - 8985414;
-            
-            Что-то вроде этого:
+            // 2. Переворачиваем очищенную строку.
+            const reversedStr = cleanedStr.split('').reverse().join('');
 
-            let numberArray = [89218985414];
-            let [a, b, c, d, e, f, g, h, i, j, k] = numberArray;
-
-            function createPhoneNumber(numberArray) {
-                return(console.log((a)-(b, c, d)-(e, f, g)-(h, i)-(j, k)))
+            // 3. Сравниваем исходную очищенную строку с перевернутой.
+            return cleanedStr === reversedStr;
             }
 
-            console.log(createPhoneNumber(numberArray))
+            console.log(isPalindrome("А роза упала на лапу Азора")); 
+            console.log(isPalindrome("Antana"))
+            console.log(isPalindrome("radar"))
 
-            Только не понимаю как это упростить, например разбить номер на 3 части; 
-            указать что a - это первая цифра, b - код оператора, c - номер абонента;
+
+            // Попытка №1 - хотел сделать сравнение без использования переменных, но не срабатывает переход к нижнему регистру.
+        
+           function isPalindrome(str) {
+                if(str.toLowerCase('').split('').reverse().join('') == str) {
+                    console.log("Это Палиндром")
+                } else {
+                    console.log("Это не Палиндром")
+                }
+            }
+
+            isPalindrome('radtar');
+            isPalindrome('radar');
+            isPalindrome('RadAr');
+
+
+            //Попытка №2 - хотел сделать без использования условий, но с новым значением, который содержит в себе видоизмененную строку.
+            function isPalindrome(str) {
+                reStr = str.toLowerCase('').split('').reverse('').join('');
+                return str == reStr;
+            }
+
+            console.log(isPalindrome(Work));
+            console.log(isPalindrome(AnNa));
+            console.log(isPalindrome(radar));
+            */
+        2.
+        /*
+            // опять же, нашёл только такое решение, но предполагаю что есть и более короткие способы.
+
+            function findShortestWord(sentence) {
+            // Разделяем строку на массив слов, используя пробелы как разделитель
+            const words = sentence.split(' ');
+
+            // Инициализируем переменную для самого короткого слова, используя первое слово
+            let shortestWord = words[0];
+
+            // Проходим по остальным словам, начиная со второго
+            for (let i = 1; i < words.length; i++) {
+                // Сравниваем длину текущего слова с длиной самого короткого слова
+                if (words[i].length < shortestWord.length) {
+                shortestWord = words[i]; // Если текущее слово короче, обновляем shortestWord
+                }
+            }
+
+            return shortestWord; // Возвращаем найденное самое короткое слово
+            }
+
+            let sentence = "Длинное и не очень слово";
+
+            console.log(`Самое короткое слово в "${sentence}": ${findShortestWord(sentence)}`); 
+        */
+        3.
+
+            /*
+            // Есть ли вообще какие-то другие способы выполнения этого задания, помимо деструкторизации? 
+
+            function createPhoneNumber(num) {
+            let arr = num.toString().split('');
+                return `${arr[0]} (${arr[1]}${arr[2]}${arr[3]}) ${arr[4]}${arr[5]}${arr[6]}-${arr[7]}${arr[8]}-${arr[9]}${arr[10]}`;
+            }
+
+            console.log(createPhoneNumber(89218985414));
             */
 
         4.
-    
-        
+            /*
+            //Прочитал про Mat.min & Mat.max - самое легкое задние пока что
+
+            function findMinandMax(arr){
+                let minValue = Math.min(...arr);
+                let maxValue = Math.max(...arr);
+                return (`Минимальное значение: ${minValue}, Максимальное значение: ${maxValue}`)
+            }
+
+            console.log(findMinandMax([1, 11, 3, 8, 26]));
+            */
         5.
+            /* 
+            // Нашёл такое решение с bubble Sort'ом 
+            function bubbleSort(arr){
+                for (let i = 0; i < arr.length; i++) {
+                    for (let j = 0; j < arr.length -1 -i; j++) {
+                        if (arr[j] > arr[j+1]){
+                            let tmp = arr[j];
+                            arr[j] = arr[j+1];
+                            arr[j+1] = tmp;
+                        }                      
+                    }
+                }
+                console.log(arr);
+            }
+
+            let arr = [17, 26, 58, 4, 10, 106, -5];
+            bubbleSort(arr)
 
 
-
+            // Подогнал сортировку массива из предыдущего урока. 
+            function sortArr(simpleArr){
+                simpleArr.sort((a, b) => a - b);
+                return simpleArr
+            }
+                
+            let simpleArr = [99, 64, 45, 32, 12, 7];
+            console.log(sortArr(simpleArr));
+            */
     </script>
 </body>
 </html>
