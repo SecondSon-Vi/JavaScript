@@ -6,136 +6,83 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>№11 Spread & Rest</h1>
+    <h1>code diagnostic</h1>
 
     <script>
 
 
-        1.
-        /*
-            // вариант из сети, где сравнивается строка оригинальная и перевернутая. Он рабочий.
+       // 1. Найдите с помощью break points ошибку в коде этой функции и исправьте ее:
 
-            function isPalindrome(str) {
-            // 1. Приводим строку к нижнему регистру и удаляем все не буквенно-цифровые символы.
-            const cleanedStr = str.toLowerCase().replace(/[^a-zа-я0-9]/g, '');
+function hasEvenNumber(arr) {
 
-            // 2. Переворачиваем очищенную строку.
-            const reversedStr = cleanedStr.split('').reverse().join('');
+  let foundEven = false; // смущает что мы в самом начале задаем значение false.
 
-            // 3. Сравниваем исходную очищенную строку с перевернутой.
-            return cleanedStr === reversedStr;
-            }
+  for (let i = 0; i < arr.length; i++) {
 
-            console.log(isPalindrome("А роза упала на лапу Азора")); 
-            console.log(isPalindrome("Antana"))
-            console.log(isPalindrome("radar"))
+//console.log(foundEven) - когда добавляю лог здесь, в окне консоли выводится значение 3 false, что означает цифра 3?
+    if (arr[i] % 2 === 0) {
 
+      foundEven = true;
 
-            // Попытка №1 - хотел сделать сравнение без использования переменных, но не срабатывает переход к нижнему регистру.
-        
-           function isPalindrome(str) {
-                if(str.toLowerCase('').split('').reverse().join('') == str) {
-                    console.log("Это Палиндром")
-                } else {
-                    console.log("Это не Палиндром")
-                }
-            }
+    } else if (arr[i] % 2 !== 0) {
 
-            isPalindrome('radtar');
-            isPalindrome('radar');
-            isPalindrome('RadAr');
+      foundEven = false;
+
+    }
+
+  }
+
+  return foundEven;
+
+}
+
+console.log(hasEvenNumber([1, 3, 4, 5])); // Ожидается: true
+
+//если комментирую всё что идет после else if - получаю заветное true, но кажется что foundEven просто меняется при изменении его значения 
 
 
-            //Попытка №2 - хотел сделать без использования условий, но с новым значением, который содержит в себе видоизмененную строку.
-            function isPalindrome(str) {
-                reStr = str.toLowerCase('').split('').reverse('').join('');
-                return str == reStr;
-            }
 
-            console.log(isPalindrome(Work));
-            console.log(isPalindrome(AnNa));
-            console.log(isPalindrome(radar));
-            */
-        2.
-        /*
-            // опять же, нашёл только такое решение, но предполагаю что есть и более короткие способы.
+//2. Найдите с помощью debugger ошибку в коде этой функции и исправьте ее:
 
-            function findShortestWord(sentence) {
-            // Разделяем строку на массив слов, используя пробелы как разделитель
-            const words = sentence.split(' ');
+function calculateAverage(numbers) {
 
-            // Инициализируем переменную для самого короткого слова, используя первое слово
-            let shortestWord = words[0];
+  let sum = 0;
 
-            // Проходим по остальным словам, начиная со второго
-            for (let i = 1; i < words.length; i++) {
-                // Сравниваем длину текущего слова с длиной самого короткого слова
-                if (words[i].length < shortestWord.length) {
-                shortestWord = words[i]; // Если текущее слово короче, обновляем shortestWord
-                }
-            }
+  for (let i = 0; i <= numbers.length; i++) { 
 
-            return shortestWord; // Возвращаем найденное самое короткое слово
-            }
+    sum += numbers[i]; //совершается дополнительная итерация, 4 раза проходит условие, вместо 3-х
 
-            let sentence = "Длинное и не очень слово";
+  }
 
-            console.log(`Самое короткое слово в "${sentence}": ${findShortestWord(sentence)}`); 
-        */
-        3.
+  return sum / numbers.length;
+}
 
-            /*
-            // Есть ли вообще какие-то другие способы выполнения этого задания, помимо деструкторизации? 
-
-            function createPhoneNumber(num) {
-            let arr = num.toString().split('');
-                return `${arr[0]} (${arr[1]}${arr[2]}${arr[3]}) ${arr[4]}${arr[5]}${arr[6]}-${arr[7]}${arr[8]}-${arr[9]}${arr[10]}`;
-            }
-
-            console.log(createPhoneNumber(89218985414));
-            */
-
-        4.
-            /*
-            //Прочитал про Mat.min & Mat.max - самое легкое задние пока что
-
-            function findMinandMax(arr){
-                let minValue = Math.min(...arr);
-                let maxValue = Math.max(...arr);
-                return (`Минимальное значение: ${minValue}, Максимальное значение: ${maxValue}`)
-            }
-
-            console.log(findMinandMax([1, 11, 3, 8, 26]));
-            */
-        5.
-            /* 
-            // Нашёл такое решение с bubble Sort'ом 
-            function bubbleSort(arr){
-                for (let i = 0; i < arr.length; i++) {
-                    for (let j = 0; j < arr.length -1 -i; j++) {
-                        if (arr[j] > arr[j+1]){
-                            let tmp = arr[j];
-                            arr[j] = arr[j+1];
-                            arr[j+1] = tmp;
-                        }                      
-                    }
-                }
-                console.log(arr);
-            }
-
-            let arr = [17, 26, 58, 4, 10, 106, -5];
-            bubbleSort(arr)
+console.log(calculateAverage([2, 4, 6])); // Ожидается: 4
 
 
-            // Подогнал сортировку массива из предыдущего урока. 
-            function sortArr(simpleArr){
-                simpleArr.sort((a, b) => a - b);
-                return simpleArr
-            }
-                
-            let simpleArr = [99, 64, 45, 32, 12, 7];
-            console.log(sortArr(simpleArr));
-            */
+
+//3. Найдите с помощью console.log ошибку в коде этой функции и исправьте ее:
+
+function findLargestNumber(arr) {
+
+  let largest = arr[0];
+
+  for (let i = 0; i < arr.length; i++) {
+
+    if (arr[i] > largest) {
+
+      largest = arr[i];
+
+    }
+
+  }
+
+  return largest;
+
+}
+
+console.log(findLargestNumber([-10, -20, -30])); 
+
     </script>
 </body>
 </html>
