@@ -15,21 +15,15 @@
 
 function hasEvenNumber(arr) {
 
-  let foundEven = false; // смущает что мы в самом начале задаем значение false.
+  let foundEven = false; 
 
   for (let i = 0; i < arr.length; i++) {
 
-//console.log(foundEven) - когда добавляю лог здесь, в окне консоли выводится значение 3 false, что означает цифра 3?
     if (arr[i] % 2 === 0) {
 
       foundEven = true;
 
-    } else if (arr[i] % 2 !== 0) {
-
-      foundEven = false;
-
-    }
-
+    } 
   }
 
   return foundEven;
@@ -38,9 +32,6 @@ function hasEvenNumber(arr) {
 
 console.log(hasEvenNumber([1, 3, 4, 5])); // Ожидается: true
 
-//если комментирую всё что идет после else if - получаю заветное true, но кажется что foundEven просто меняется при изменении его значения 
-
-
 
 //2. Найдите с помощью debugger ошибку в коде этой функции и исправьте ее:
 
@@ -48,9 +39,9 @@ function calculateAverage(numbers) {
 
   let sum = 0;
 
-  for (let i = 0; i <= numbers.length; i++) { 
+  for (let i = 0; i < numbers.length; i++) { 
 
-    sum += numbers[i]; //совершается дополнительная итерация, 4 раза проходит условие, вместо 3-х
+    sum += numbers[i]; 
 
   }
 
