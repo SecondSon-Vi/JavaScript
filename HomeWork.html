@@ -10,70 +10,37 @@
 
     <script>
 
+      1. 
+/*
+      const me = {
+        name: 'Ray',
+        age: 24,
+        isEmployed: true,
+        hobbies: ['martial arts', 'drawing', 'composing', 'writing']
+      }
 
-       // 1. Найдите с помощью break points ошибку в коде этой функции и исправьте ее:
+      console.log(`My name is ${me.name}, I'm ${me.age} y.o, all i'm say is a ${me['isEmployed']}, my activities is quite simple: ${me['hobbies']}`);
+      // почему при выводе hobbies значения из массива пишутся без запятой?
+*/
+      2.
 
-function hasEvenNumber(arr) {
+      const me2 = {
+        name: 'Ray',
+        age: 24,
+        isEmployed: true,
+        hobbies: ['martial arts', 'drawing', 'composing', 'writing'],
+        "hair color": 'Mixed'
+      }
 
-  let foundEven = false; 
+      me2.age = 25;
+      me2["job position"] = 'chief';
+      delete me2.isEmployed
 
-  for (let i = 0; i < arr.length; i++) {
+      for (let key in me2) {
+        console.log(`${key}: ${me2[key]}`);
+      }
 
-    if (arr[i] % 2 === 0) {
-
-      foundEven = true;
-
-    } 
-  }
-
-  return foundEven;
-
-}
-
-console.log(hasEvenNumber([1, 3, 4, 5])); // Ожидается: true
-
-
-//2. Найдите с помощью debugger ошибку в коде этой функции и исправьте ее:
-
-function calculateAverage(numbers) {
-
-  let sum = 0;
-
-  for (let i = 0; i < numbers.length; i++) { 
-
-    sum += numbers[i]; 
-
-  }
-
-  return sum / numbers.length;
-}
-
-console.log(calculateAverage([2, 4, 6])); // Ожидается: 4
-
-
-
-//3. Найдите с помощью console.log ошибку в коде этой функции и исправьте ее:
-
-function findLargestNumber(arr) {
-
-  let largest = arr[0];
-
-  for (let i = 0; i < arr.length; i++) {
-
-    if (arr[i] > largest) {
-
-      largest = arr[i];
-
-    }
-
-  }
-
-  return largest;
-
-}
-
-console.log(findLargestNumber([-10, -20, -30])); 
-
+      // name, job position, hair color - все их значения выводятся с ковычками. Есть ли у объекта в js вариант, когда строка выводится без ковычек?
     </script>
 </body>
 </html>
