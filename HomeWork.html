@@ -45,19 +45,23 @@
 
 //4. Напиши функцию, которая удаляет элемент с указанным ID из документа;
  
-      //На функции встрял, предполагаю есть два способа: 1) через if includes и далее прописать id; 2) Удаление дочернего элемента, с указанным ID
-/*
-    const removeElement = document.getElementById('findAndDelete');
+    const removeElement = document.getElementById('findAndDelete'); // задаем переменную со значением элемента, найденного по Id
 
-    function removeById(removeElement) {
-        if (removeElement) {
-          removeElement.parentNode.removechild(removeElement);
+    function removeById(removeElement) {    // создаю функцию, параметром которой является объект для поиска id
+        if (removeElement.getAttribute('id') === 'findAndDelete') {   // прописываю условие, если полученное значение атрибута(id) равно нужному нам id 
+          
+          removeElement.parentNode.removeChild(removeElement); // Удаляю элемент если значение найденного id подходит
+
         }
 
-        return console.log('Element has been terminated');
-    } 
-*/
-    
+        return console.log('Element has been terminated'); // Если условие успешно выполнено возвращаю сообщение
+    }
+
+    console.log(removeById(removeElement));
+
+    // Вообще не понимаю что не так идет, если не добавляю строку выше, то не выводится сообщение при успешном удалении элемента
+
+
 //5. Измени атрибут ссылки на новый URL и выведи его значение в консоль;
 
     const link = document.querySelector('.linkToNet'); // создаем переменную и определяем её значение как класс нашей ссылки
@@ -83,16 +87,7 @@
     changeClass.classList.toggle('doNotMe'); // меняем класс
 
     console.log(changeClass); // если есть класс - toggle просто добавляет ещё один
-    
 
-
-    /*
-      1.Когда мы работаем в js и изменяем структуру документа/его элементы - все изменения происходят непосредственно в файле jS? При этом, сам HTML у нас никак не меняется, кроме использования innerHTML/textContent ? Т.е основные изменения влияют на общий документ?
-
-      2.Можно ли как-то создать элемент и тут же внести в него какую-то информацию/добавить вместе с элементом класс? Как в (что-то наподобии в emmet vs code, когда мы пишем  div и тут же можем добавить ему class)
-
-      3.Используя querySelected - как я могу поднять элемент с конца DOM'a ?
-    */
     </script>
 </body>
 </html>
