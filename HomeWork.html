@@ -6,41 +6,93 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>code diagnostic</h1>
+    <h1>DOM</h1>
 
+  1.  <div id="findElement">Wow</div>
+<br>
+  2.  <div class="changeMyColor">Change ME</div> 
+<br>
+  4.  <div id="findAndDelete">Find me and delete me</div> 
+<br>
+  5.  <a class="linkToNet" href="vk.com">Link to vk</a>
+<br>
+  7.  <div class="tryMe" id="tryMe">Change my class</div>
+<br>
+  
     <script>
 
-      1. 
+//1. Найди элемент на странице по его ID и измени его текстовое содержимое на что-то новое;
+
+    const findElement = document.getElementById('findElement'); // задаем переменную с значением поиска нужного элемента 
+    console.log(findElement); // выводим переменную в которой уже находится найденный элемент
+
+    findElement.textContent = 'not a WoW';  //выбираем переменную и указываем изменение текста
+
+//2. Используй JavaScript, чтобы изменить фон и цвет текста элемента с определенным классом;
+
+    const changeMyColor = document.querySelector('.changeMyColor'); // создаем переменную - находим класс
+    console.log(changeMyColor);
+
+    changeMyColor.style.color = 'red'; // меняем цвет текста
+    changeMyColor.style.background = 'black';  // меняем цвет фона
+
+//3. Напиши код, который создает новый параграф с текстом и добавляет его в конец документа;
+
+    const newParagraph = document.createElement('p'); // создаем переменную которая добавляет параграф
+    newParagraph.textContent = `3. I'm a paragraph`; // добавляем текст 
+    document.body.appendChild(newParagraph);  // добавляем элемент в DOM
+    console.log(newParagraph);  // Выводим значение переменной
+
+//4. Напиши функцию, которая удаляет элемент с указанным ID из документа;
+ 
+      //На функции встрял, предполагаю есть два способа: 1) через if includes и далее прописать id; 2) Удаление дочернего элемента, с указанным ID
 /*
-      const me = {
-        name: 'Ray',
-        age: 24,
-        isEmployed: true,
-        hobbies: ['martial arts', 'drawing', 'composing', 'writing']
-      }
+    const removeElement = document.getElementById('findAndDelete');
 
-      console.log(`My name is ${me.name}, I'm ${me.age} y.o, all i'm say is a ${me['isEmployed']}, my activities is quite simple: ${me['hobbies']}`);
-      // почему при выводе hobbies значения из массива пишутся без запятой?
+    function removeById(removeElement) {
+        if (removeElement) {
+          removeElement.parentNode.removechild(removeElement);
+        }
+
+        return console.log('Element has been terminated');
+    } 
 */
-      2.
+    
+//5. Измени атрибут ссылки на новый URL и выведи его значение в консоль;
 
-      const me2 = {
-        name: 'Ray',
-        age: 24,
-        isEmployed: true,
-        hobbies: ['martial arts', 'drawing', 'composing', 'writing'],
-        "hair color": 'Mixed'
-      }
+    const link = document.querySelector('.linkToNet'); // создаем переменную и определяем её значение как класс нашей ссылки
+    link.setAttribute('href', 'https://google.com');  // меняем значение атрибута - создаем новую ссылку внутри тега
+    console.log(link.getAttribute('href')); // выводим новое значение
 
-      me2.age = 25;
-      me2["job position"] = 'chief';
-      delete me2.isEmployed
+//6. Создай новый элемент, добавь к нему класс и добавь его в DOM;
 
-      for (let key in me2) {
-        console.log(`${key}: ${me2[key]}`);
-      }
+    const newDiv = document.createElement('div'); // создаем переменную со значением добавления элемента
 
-      // name, job position, hair color - все их значения выводятся с ковычками. Есть ли у объекта в js вариант, когда строка выводится без ковычек?
+    newDiv.textContent = ('6. Created and added to DOM'); // произвольный текст для лучшей видимости
+
+    newDiv.classList.add('div', 'of', 'six'); // добавляем класс
+
+    document.body.appendChild(newDiv);  // выводим в DOM
+    console.log(newDiv);
+
+//7. Переключи класс у существующего элемента и проверьте его наличие в консоли.
+
+    //const changeClass = document.querySelector('.tryMe');
+    const changeClass = document.getElementById('tryMe'); // задаем переменную с значением элемента найденного по ID
+    
+    changeClass.classList.toggle('doNotMe'); // меняем класс
+
+    console.log(changeClass); // если есть класс - toggle просто добавляет ещё один
+    
+
+
+    /*
+      1.Когда мы работаем в js и изменяем структуру документа/его элементы - все изменения происходят непосредственно в файле jS? При этом, сам HTML у нас никак не меняется, кроме использования innerHTML/textContent ? Т.е основные изменения влияют на общий документ?
+
+      2.Можно ли как-то создать элемент и тут же внести в него какую-то информацию/добавить вместе с элементом класс? Как в (что-то наподобии в emmet vs code, когда мы пишем  div и тут же можем добавить ему class)
+
+      3.Используя querySelected - как я могу поднять элемент с конца DOM'a ?
+    */
     </script>
 </body>
 </html>
