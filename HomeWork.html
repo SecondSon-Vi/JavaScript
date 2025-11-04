@@ -14,7 +14,7 @@
 <br>
   4.  <div id="findAndDelete">Find me and delete me</div> 
 <br>
-  5.  <a class="linkToNet" href="vk.com">Link to vk</a>
+  5.  <a class="linkToNet" href="https://vk.com">Link to vk</a>
 <br>
   7.  <div class="tryMe" id="tryMe">Change my class</div>
 <br>
@@ -45,22 +45,21 @@
 
 //4. Напиши функцию, которая удаляет элемент с указанным ID из документа;
  
-    const removeElement = document.getElementById('findAndDelete'); // задаем переменную со значением элемента, найденного по Id
+      function removeById(someId) {
+        const removeElement = document.getElementById(someId);
 
-    function removeById(removeElement) {    // создаю функцию, параметром которой является объект для поиска id
-        if (removeElement.getAttribute('id') === 'findAndDelete') {   // прописываю условие, если полученное значение атрибута(id) равно нужному нам id 
-          
-          removeElement.parentNode.removeChild(removeElement); // Удаляю элемент если значение найденного id подходит
+        if (removeElement) {
+          removeElement.remove();
 
+          console.log('Element has been terminated');
+
+        } else {
+
+          console.log('Element not found');
         }
+      }
 
-        return console.log('Element has been terminated'); // Если условие успешно выполнено возвращаю сообщение
-    }
-
-    console.log(removeById(removeElement));
-
-    // Вообще не понимаю что не так идет, если не добавляю строку выше, то не выводится сообщение при успешном удалении элемента
-
+      removeById('findAndDelete');
 
 //5. Измени атрибут ссылки на новый URL и выведи его значение в консоль;
 
@@ -81,7 +80,6 @@
 
 //7. Переключи класс у существующего элемента и проверьте его наличие в консоли.
 
-    //const changeClass = document.querySelector('.tryMe');
     const changeClass = document.getElementById('tryMe'); // задаем переменную с значением элемента найденного по ID
     
     changeClass.classList.toggle('doNotMe'); // меняем класс
