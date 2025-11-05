@@ -6,85 +6,118 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>DOM</h1>
+    <h1>Events</h1>
 
-  1.  <div id="findElement">Wow</div>
+  1.  <button id="clickButton">Click Me</button>
 <br>
-  2.  <div class="changeMyColor">Change ME</div> 
+  2.  <div class="changeMySize" id="changeMySize">Change ME</div> 
 <br>
-  4.  <div id="findAndDelete">Find me and delete me</div> 
+  3.  <input type="text" class="input" placeholder="push the button">
 <br>
-  5.  <a class="linkToNet" href="https://vk.com">Link to vk</a>
+  4.  <form class="sendingForm">
+        <input type="text" placeholder="Введите текст">
+        <button type="submit">Отправить</button>
+      </form>
 <br>
-  7.  <div class="tryMe" id="tryMe">Change my class</div>
-<br>
+  5.  <button class="changeThemeButton">Change theme</button>
   
     <script>
 
-//1. Найди элемент на странице по его ID и измени его текстовое содержимое на что-то новое;
+//1. Назначь для кнопки обработчик события click, который будет изменять текст этой кнопки при нажатии;
 
-    const findElement = document.getElementById('findElement'); // задаем переменную с значением поиска нужного элемента 
-    console.log(findElement); // выводим переменную в которой уже находится найденный элемент
+      const button = document.getElementById('clickButton'); // объявляем переменную
 
-    findElement.textContent = 'not a WoW';  //выбираем переменную и указываем изменение текста
+      button.addEventListener('click', () => {
+        button.textContent = 'Do not click on me'
+          console.log(`You've clicked on me`);
+      });
 
-//2. Используй JavaScript, чтобы изменить фон и цвет текста элемента с определенным классом;
+      //  Назначаем переменной обработчик события click
+      //  Указываем смену текста при клике и вывод сообщения
 
-    const changeMyColor = document.querySelector('.changeMyColor'); // создаем переменную - находим класс
-    console.log(changeMyColor);
+// Как можно сделать кнопку вновь кликабельной после нажатия?
 
-    changeMyColor.style.color = 'red'; // меняем цвет текста
-    changeMyColor.style.background = 'black';  // меняем цвет фона
 
-//3. Напиши код, который создает новый параграф с текстом и добавляет его в конец документа;
 
-    const newParagraph = document.createElement('p'); // создаем переменную которая добавляет параграф
-    newParagraph.textContent = `3. I'm a paragraph`; // добавляем текст 
-    document.body.appendChild(newParagraph);  // добавляем элемент в DOM
-    console.log(newParagraph);  // Выводим значение переменной
 
-//4. Напиши функцию, которая удаляет элемент с указанным ID из документа;
+//2. Назначь для любого элемента обработчик события mouseover, который будет изменять размер элемента при наведении;
+
+      const changeSize = document.querySelector('.changeMySize') // определяем переменную по классу
+
+      changeSize.addEventListener('mouseover', () => {
+        changeSize.style.transform = 'scale(1.2)';
+        console.log('big');
+      });
+
+      // Назначаем обработчик событий mouseover и изменение размеров объекта
+      // Выводим сообщение в консоль
+
+      changeSize.addEventListener('mouseout', () => {
+        changeSize.style.transform = 'scale(1)';
+        console.log('small');
+      });
+
+      // Назначаем обработчик событий mouseout и измененяем размер обратно
+      // Выводим сообщение в консоль
+
+
+//   Хотел сместить блок changeSize используя margin-left, но выдавет синтаксическую ошибку
+
+
+
+
+
+//3. Назначь для инпута обработчик события keyup, который будет выводить отпущенную клавишу в консоль;
+
+      const inputKey = document.querySelector('.input');
+
+      inputKey.addEventListener('keyup', () => {
+        console.log(`'Отпущена клавиша:' ${event.key}`);
+      });
+
+
+//4. Создай форму и добавь обработчик события submit, который будет показывать сообщение об успешной отправке;
  
-      function removeById(someId) {
-        const removeElement = document.getElementById(someId);
+      const submitForm = document.querySelector('.sendingForm');
 
-        if (removeElement) {
-          removeElement.remove();
+        submitForm.addEventListener('submit', () => {
+          alert('Form succesfully submited!');
+        })
 
-          console.log('Element has been terminated');
 
-        } else {
+//   Нужна проверка на заполненность, чтобы не отправлять пустую форму
 
-          console.log('Element not found');
-        }
-      }
 
-      removeById('findAndDelete');
 
-//5. Измени атрибут ссылки на новый URL и выведи его значение в консоль;
+//5. Пусть на странице есть кнопка с надписью 'Изменить тему', которая позволяет переключать тему страницы. 
+  // Например, по умолчанию тема светлая: задний фон - белый, текст - черный. 
+  // Нажимаем на кнопку -> тема меняется на темную: цвет фона - черный, текст - белый. 
+  // Еще раз нажимаем на кнопку -> тема снова светлая и т. д.
 
-    const link = document.querySelector('.linkToNet'); // создаем переменную и определяем её значение как класс нашей ссылки
-    link.setAttribute('href', 'https://google.com');  // меняем значение атрибута - создаем новую ссылку внутри тега
-    console.log(link.getAttribute('href')); // выводим новое значение
 
-//6. Создай новый элемент, добавь к нему класс и добавь его в DOM;
 
-    const newDiv = document.createElement('div'); // создаем переменную со значением добавления элемента
+      
+      // Не понимаю как реализовать добавление стилей без css, выдает синтаксическую ошибку
+      // Uncaught SyntaxError: Invalid left-hand side in assignment  
 
-    newDiv.textContent = ('6. Created and added to DOM'); // произвольный текст для лучшей видимости
+      // Логика такова: определяю переменную, затем создаю обработчик, добавляю класс для темной темы
+      // Задаю стили для цвета текста и фона. 
+      // После использую toggle c ранее созданным классом и переключаю с дефолтного отсутствия стилей на класс со стилями для темной темы.
+      
 
-    newDiv.classList.add('div', 'of', 'six'); // добавляем класс
+      //const changeTheme = document.querySelector('.changeThemeButton');
 
-    document.body.appendChild(newDiv);  // выводим в DOM
-    console.log(newDiv);
+      const changeTheme = document.querySelector('.changeThemeButton');
 
-//7. Переключи класс у существующего элемента и проверьте его наличие в консоли.
+      changeTheme.addEventListener('click', () => {
 
-    const changeClass = document.getElementById('tryMe'); // задаем переменную с значением элемента найденного по ID
-    
-    changeClass.classList.toggle('doNotMe'); // меняем класс
+        document.body.classList.add('dark-theme');
 
-    console.log(changeClass); // если есть класс - toggle просто добавляет ещё один
+        //document.body.dark-theme.style.backgroundColor = 'black';
+        //document.body.dark-theme.style.color = 'white';
+
+        document.body.classList.toggle('dark-theme');
+      });
 
     </script>
 </body>
