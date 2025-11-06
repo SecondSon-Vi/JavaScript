@@ -21,6 +21,21 @@
 <br>
   5.  <button class="changeThemeButton">Change theme</button>
   
+
+<style>
+
+  .body {
+    background-color: white;
+    color: black;
+  }
+
+  .dark-theme {
+    background-color: black;
+    color: white;
+  }
+</style>
+
+
     <script>
 
 //1. Назначь для кнопки обработчик события click, который будет изменять текст этой кнопки при нажатии;
@@ -35,17 +50,13 @@
       //  Назначаем переменной обработчик события click
       //  Указываем смену текста при клике и вывод сообщения
 
-// Как можно сделать кнопку вновь кликабельной после нажатия?
-
-
-
-
 //2. Назначь для любого элемента обработчик события mouseover, который будет изменять размер элемента при наведении;
 
       const changeSize = document.querySelector('.changeMySize') // определяем переменную по классу
 
       changeSize.addEventListener('mouseover', () => {
         changeSize.style.transform = 'scale(1.2)';
+        changeSize.style.marginLeft = '40px';
         console.log('big');
       });
 
@@ -54,26 +65,26 @@
 
       changeSize.addEventListener('mouseout', () => {
         changeSize.style.transform = 'scale(1)';
+        changeSize.style.marginLeft = 'auto';
         console.log('small');
       });
 
       // Назначаем обработчик событий mouseout и измененяем размер обратно
       // Выводим сообщение в консоль
 
-
-//   Хотел сместить блок changeSize используя margin-left, но выдавет синтаксическую ошибку
-
-
-
+//   Блок я сместил, синтаксис поправил. Корректно использовать marginLeft = 'auto', когда возвращаю блок в исходное положение?
+//   А то блок я сместил, но без обратной корректировки он после первого же наведения так и оставался сдвинут влево на 40px
 
 
 //3. Назначь для инпута обработчик события keyup, который будет выводить отпущенную клавишу в консоль;
 
       const inputKey = document.querySelector('.input');
 
-      inputKey.addEventListener('keyup', () => {
+      inputKey.addEventListener('keyup', (event) => {
         console.log(`'Отпущена клавиша:' ${event.key}`);
       });
+
+//    Вопрос, почему используя стрелочную функцию, здесь мы должны прописать в параметрах (event), когда для предыдущих функций было достаточно оставить скобки пустыми?
 
 
 //4. Создай форму и добавь обработчик события submit, который будет показывать сообщение об успешной отправке;
@@ -81,24 +92,24 @@
       const submitForm = document.querySelector('.sendingForm');
 
         submitForm.addEventListener('submit', () => {
+
+          if (!submitForm.querySelector('input').value.trim()) {
+
+            event.preventDefault();
+
+            alert('Введите текст!');
+              return;
+          }
+
           alert('Form succesfully submited!');
+          event.preventDefault();
         })
-
-
-//   Нужна проверка на заполненность, чтобы не отправлять пустую форму
-
-
 
 //5. Пусть на странице есть кнопка с надписью 'Изменить тему', которая позволяет переключать тему страницы. 
   // Например, по умолчанию тема светлая: задний фон - белый, текст - черный. 
   // Нажимаем на кнопку -> тема меняется на темную: цвет фона - черный, текст - белый. 
   // Еще раз нажимаем на кнопку -> тема снова светлая и т. д.
 
-
-
-      
-      // Не понимаю как реализовать добавление стилей без css, выдает синтаксическую ошибку
-      // Uncaught SyntaxError: Invalid left-hand side in assignment  
 
       // Логика такова: определяю переменную, затем создаю обработчик, добавляю класс для темной темы
       // Задаю стили для цвета текста и фона. 
@@ -111,13 +122,15 @@
 
       changeTheme.addEventListener('click', () => {
 
-        document.body.classList.add('dark-theme');
-
-        //document.body.dark-theme.style.backgroundColor = 'black';
-        //document.body.dark-theme.style.color = 'white';
+        document.body.classList.add('.dark-theme');
 
         document.body.classList.toggle('dark-theme');
+        console.log("Theme changed!");
       });
+
+//  Когда я добавляю класс на 125 строке я обязательно использую точку чтобы обозначить что это класс
+//  Но при этом, когда я переключаю его с помощью toggle я просто пишу класс строчкой - это особенности синтаксиса или я что-то путаю?
+
 
     </script>
 </body>
