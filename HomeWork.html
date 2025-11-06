@@ -91,7 +91,7 @@
  
       const submitForm = document.querySelector('.sendingForm');
 
-        submitForm.addEventListener('submit', () => {
+        submitForm.addEventListener('submit', (event) => {
 
           if (!submitForm.querySelector('input').value.trim()) {
 
@@ -122,14 +122,11 @@
 
       changeTheme.addEventListener('click', () => {
 
-        document.body.classList.add('.dark-theme');
+        //document.body.classList.add('.dark-theme');
 
         document.body.classList.toggle('dark-theme');
         console.log("Theme changed!");
       });
-
-//  Когда я добавляю класс на 125 строке я обязательно использую точку чтобы обозначить что это класс
-//  Но при этом, когда я переключаю его с помощью toggle я просто пишу класс строчкой - это особенности синтаксиса или я что-то путаю?
 
 
     </script>
