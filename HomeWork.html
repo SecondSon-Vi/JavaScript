@@ -3,132 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./HW.css">
+    <link rel="stylesheet" href="common.css">
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>Events</h1>
 
-  1.  <button id="clickButton">Click Me</button>
+    <div class="test-wrapper">
+
+        <h1 class="test-title">Арифметический тест</h1>
+
+        <button class="begin-test-button">Начать тест</button> 
+        <!--    при нажатии скрывается и показывает блок quiz-wrapper   -->
+
 <br>
-  2.  <div class="changeMySize" id="changeMySize">Change ME</div> 
-<br>
-  3.  <input type="text" class="input" placeholder="push the button">
-<br>
-  4.  <form class="sendingForm">
-        <input type="text" placeholder="Введите текст">
-        <button type="submit">Отправить</button>
-      </form>
-<br>
-  5.  <button class="changeThemeButton">Change theme</button>
-  
 
-<style>
+        <!--    пока тест не начат блок скрыт   -->
 
-  .body {
-    background-color: white;
-    color: black;
-  }
+        <div class="quiz-wrapper">
+            <div class="question-title">Вопрос</div>
+                <!--  Задаем в JS  -->
+            <div class="quiz-answers">
+                <ul class="options-list">
+                    <!--  Задаем в JS  -->
+                </ul>
 
-  .dark-theme {
-    background-color: black;
-    color: white;
-  }
-</style>
+                <!--
+                Введите ответ: <input type="text" class="answer-free">
+                <input type="submit">
+                -->
+            </div>
 
+            <div class="quiz-total"></div>
+
+            <button class="next-question-button">Следующий вопрос</button>
+        </div>
+    </div>
+    
+    <div class="test-results hidden"> <!--   убери hidden потом  -->
+        <button class="reset-test-button">Перезапустить тест</button> // станет доступна по завершению теста
+        <div class="result-text">Результаты</div>   // отобразиться по завершению теста
+        <div class="result-score">Результаты</div>
+    </div>
+
+
+    <script src="./questions.js"></script>
 
     <script>
 
-//1. Назначь для кнопки обработчик события click, который будет изменять текст этой кнопки при нажатии;
+        // Начало работы теста
 
-      const button = document.getElementById('clickButton'); // объявляем переменную
+        const beginTest = document.querySelector('.begin-test-button');
+        const quizWrapper = document.querySelector('.quiz-wrapper');
 
-      button.addEventListener('click', () => {
-        button.textContent = 'Do not click on me'
-          console.log(`You've clicked on me`);
-      });
+        beginTest.addEventListener('click', () => {
+            beginTest.style.display = 'none';
+            quizWrapper.style.display = 'block';
 
-      //  Назначаем переменной обработчик события click
-      //  Указываем смену текста при клике и вывод сообщения
-
-//2. Назначь для любого элемента обработчик события mouseover, который будет изменять размер элемента при наведении;
-
-      const changeSize = document.querySelector('.changeMySize') // определяем переменную по классу
-
-      changeSize.addEventListener('mouseover', () => {
-        changeSize.style.transform = 'scale(1.2)';
-        changeSize.style.marginLeft = '40px';
-        console.log('big');
-      });
-
-      // Назначаем обработчик событий mouseover и изменение размеров объекта
-      // Выводим сообщение в консоль
-
-      changeSize.addEventListener('mouseout', () => {
-        changeSize.style.transform = 'scale(1)';
-        changeSize.style.marginLeft = 'auto';
-        console.log('small');
-      });
-
-      // Назначаем обработчик событий mouseout и измененяем размер обратно
-      // Выводим сообщение в консоль
-
-//   Блок я сместил, синтаксис поправил. Корректно использовать marginLeft = 'auto', когда возвращаю блок в исходное положение?
-//   А то блок я сместил, но без обратной корректировки он после первого же наведения так и оставался сдвинут влево на 40px
-
-
-//3. Назначь для инпута обработчик события keyup, который будет выводить отпущенную клавишу в консоль;
-
-      const inputKey = document.querySelector('.input');
-
-      inputKey.addEventListener('keyup', (event) => {
-        console.log(`'Отпущена клавиша:' ${event.key}`);
-      });
-
-//    Вопрос, почему используя стрелочную функцию, здесь мы должны прописать в параметрах (event), когда для предыдущих функций было достаточно оставить скобки пустыми?
-
-
-//4. Создай форму и добавь обработчик события submit, который будет показывать сообщение об успешной отправке;
- 
-      const submitForm = document.querySelector('.sendingForm');
-
-        submitForm.addEventListener('submit', (event) => {
-
-          if (!submitForm.querySelector('input').value.trim()) {
-
-            event.preventDefault();
-
-            alert('Введите текст!');
-              return;
-          }
-
-          alert('Form succesfully submited!');
-          event.preventDefault();
+            console.log("закрыл кнопку - открыл поле с ответами, кнопку для перехода на след вопрос");
         })
 
-//5. Пусть на странице есть кнопка с надписью 'Изменить тему', которая позволяет переключать тему страницы. 
-  // Например, по умолчанию тема светлая: задний фон - белый, текст - черный. 
-  // Нажимаем на кнопку -> тема меняется на темную: цвет фона - черный, текст - белый. 
-  // Еще раз нажимаем на кнопку -> тема снова светлая и т. д.
 
 
-      // Логика такова: определяю переменную, затем создаю обработчик, добавляю класс для темной темы
-      // Задаю стили для цвета текста и фона. 
-      // После использую toggle c ранее созданным классом и переключаю с дефолтного отсутствия стилей на класс со стилями для темной темы.
-      
+        // Отображение данных из массива
 
-      //const changeTheme = document.querySelector('.changeThemeButton');
+       // const quiz = document.querySelector('quiz-wrapper');
+        const nextButton = document.querySelector('.next-question-button');
 
-      const changeTheme = document.querySelector('.changeThemeButton');
+        let count = 0;
+        let userScore = 0;
 
-      changeTheme.addEventListener('click', () => {
+        showQuestions(count);
 
-        //document.body.classList.add('.dark-theme');
+        function showQuestions(index){
+            const question = document.querySelector('.question-title');
+            const options = document.querySelector('.options-list');
+            const total = document.querySelector('.quiz-total');
 
-        document.body.classList.toggle('dark-theme');
-        console.log("Theme changed!");
-      });
+            question.innerHTML = `${questions[index].question}`;
+            options.innerHTML = '';
+            questions[index].options.forEach(item => {
+                const text = `<li class="quiz-option">${item}</li>`;
+                options.insertAdjacentHTML("beforeend", text)
+            });
 
+            // Выбор конкретного варианта ответа
+
+            const optionsList = options.querySelectorAll('.quiz-option');
+            optionsList.forEach(item => item.setAttribute('onclick', 'optionSelected(this)'));
+
+
+            // Отображение на каком мы вопросе
+
+            total.innerHTML = `${index + 1} из ${questions.length}`;
+        }
+
+        // Выбор ответа
+
+        function optionSelected(answer) {
+            const userAnswer = answer.textContent;
+            const correctAnswer = questions[count].answer;
+            const options = document.querySelectorAll('.quiz-option');
+
+            if (userAnswer == correctAnswer) {
+                userScore += 1;
+                answer.classList.add('correct');
+                //
+            } else {
+                answer.classList.add('incorrect');
+
+                options.forEach(item => {
+                    if (item.textContent == correctAnswer) {
+                        setTimeout(() => {
+                            item.classList.add('correct');
+                        }, 100);
+                    }
+                });
+            }
+            
+            options.forEach(item => item.classList.add('disabled'));
+        }
+        
+        // Смена вопроса
+
+        nextButton.addEventListener('click', nextQuestion);
+
+        function nextQuestion() {
+            const option = document.querySelector('.quiz-option');
+            const testResults = document.querySelector('.test-results');
+            const resultText = document.querySelector('.result-text');
+
+            if ((count + 1) == questions.length && option.classList.contains('disabled')) {
+                testResults.classList.remove('hidden');
+                quizWrapper.style.display = 'none'; // quizWrapper.classList.add('hidden');
+                resultText.innerHTML = `right questions: ${userScore} out of ${questions.length}`;
+                    return;
+            }
+
+
+            if (option.classList.contains('disabled')) {
+                count ++;
+                showQuestions(count);
+
+            } else {
+                    alert("Choose the answer")
+                }
+        }
 
     </script>
+    
 </body>
 </html>
