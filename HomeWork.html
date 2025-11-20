@@ -6,129 +6,52 @@
     <title>JS-Learning</title>
 </head>
 <body>
-    <h1>Events</h1>
-
-  1.  <button id="clickButton">Click Me</button>
-<br>
-  2.  <div class="changeMySize" id="changeMySize">Change ME</div> 
-<br>
-  3.  <input type="text" class="input" placeholder="push the button">
-<br>
-  4.  <form class="sendingForm">
-        <input type="text" placeholder="Введите текст">
-        <button type="submit">Отправить</button>
-      </form>
-<br>
-  5.  <button class="changeThemeButton">Change theme</button>
-  
-
-<style>
-
-  .body {
-    background-color: white;
-    color: black;
-  }
-
-  .dark-theme {
-    background-color: black;
-    color: white;
-  }
-</style>
-
 
     <script>
+        /*
+            Создай объект student с вложенными объектами и массивами. 
+            Затем создай поверхностную копию этого объекта (разными способами!) и измени вложенные структуры (массивы, объекты) у копии, распечатай их. 
+            Затем распечатай те же свойства у оригинала, чтобы увидеть, как на нем отразились изменения. 
+            Объясни своими словами, что произошло;
+        */
 
-//1. Назначь для кнопки обработчик события click, который будет изменять текст этой кнопки при нажатии;
+/*
+        const student = {
+            name: "Ray",
+            age: 24,
+            skills: ["html", "css", "js"]
+        }
 
-      const button = document.getElementById('clickButton'); // объявляем переменную
+        const newStudent = Object.assign({}, student)
+        newStudent.age = 25;
+        newStudent.skills = ["HTML", "CSS", "TypeScript"];
+        console.log(`Student name is ${newStudent.name}, age: ${newStudent.age}, and skills are ${newStudent.skills}`);
+        // Использовал метод Object.assign; Первым параметром указал пустой объект - тем самым скопировал данные из объекта указанного во втором аргументе.
 
-      button.addEventListener('click', () => {
-        button.textContent = 'Do not click on me'
-          console.log(`You've clicked on me`);
-      });
+        console.log(`Student name is ${student.name}, age: ${student.age}, and skills are ${student.skills}`);
+        // Изменив новый объект свойства оригинального объекта не поменялись 
 
-      //  Назначаем переменной обработчик события click
-      //  Указываем смену текста при клике и вывод сообщения
+        //console.log(student === newStudent);
+        //Значение -  False, объекты неравны
+*/
 
-//2. Назначь для любого элемента обработчик события mouseover, который будет изменять размер элемента при наведении;
+        const student = {
+            name: "Ray",
+            age: 24,
+            skills: ["html", "css", "js"]
+        }
 
-      const changeSize = document.querySelector('.changeMySize') // определяем переменную по классу
+        const newStudent = {...student};
+        newStudent.name = "Jay"
+        newStudent.age = 25
+        newStudent.skills = ["HTML", "CSS", "TypeScript"]
+        console.log(`New Student name is ${newStudent.name}, age: ${newStudent.age}, and skills are ${newStudent.skills}`);
 
-      changeSize.addEventListener('mouseover', () => {
-        changeSize.style.transform = 'scale(1.2)';
-        changeSize.style.marginLeft = '40px';
-        console.log('big');
-      });
+        console.log(`Student name is ${student.name}, age: ${student.age}, and skills are ${student.skills}`);
 
-      // Назначаем обработчик событий mouseover и изменение размеров объекта
-      // Выводим сообщение в консоль
-
-      changeSize.addEventListener('mouseout', () => {
-        changeSize.style.transform = 'scale(1)';
-        changeSize.style.marginLeft = 'auto';
-        console.log('small');
-      });
-
-      // Назначаем обработчик событий mouseout и измененяем размер обратно
-      // Выводим сообщение в консоль
-
-//   Блок я сместил, синтаксис поправил. Корректно использовать marginLeft = 'auto', когда возвращаю блок в исходное положение?
-//   А то блок я сместил, но без обратной корректировки он после первого же наведения так и оставался сдвинут влево на 40px
-
-
-//3. Назначь для инпута обработчик события keyup, который будет выводить отпущенную клавишу в консоль;
-
-      const inputKey = document.querySelector('.input');
-
-      inputKey.addEventListener('keyup', (event) => {
-        console.log(`'Отпущена клавиша:' ${event.key}`);
-      });
-
-//    Вопрос, почему используя стрелочную функцию, здесь мы должны прописать в параметрах (event), когда для предыдущих функций было достаточно оставить скобки пустыми?
-
-
-//4. Создай форму и добавь обработчик события submit, который будет показывать сообщение об успешной отправке;
- 
-      const submitForm = document.querySelector('.sendingForm');
-
-        submitForm.addEventListener('submit', (event) => {
-
-          if (!submitForm.querySelector('input').value.trim()) {
-
-            event.preventDefault();
-
-            alert('Введите текст!');
-              return;
-          }
-
-          alert('Form succesfully submited!');
-          event.preventDefault();
-        })
-
-//5. Пусть на странице есть кнопка с надписью 'Изменить тему', которая позволяет переключать тему страницы. 
-  // Например, по умолчанию тема светлая: задний фон - белый, текст - черный. 
-  // Нажимаем на кнопку -> тема меняется на темную: цвет фона - черный, текст - белый. 
-  // Еще раз нажимаем на кнопку -> тема снова светлая и т. д.
-
-
-      // Логика такова: определяю переменную, затем создаю обработчик, добавляю класс для темной темы
-      // Задаю стили для цвета текста и фона. 
-      // После использую toggle c ранее созданным классом и переключаю с дефолтного отсутствия стилей на класс со стилями для темной темы.
-      
-
-      //const changeTheme = document.querySelector('.changeThemeButton');
-
-      const changeTheme = document.querySelector('.changeThemeButton');
-
-      changeTheme.addEventListener('click', () => {
-
-        //document.body.classList.add('.dark-theme');
-
-        document.body.classList.toggle('dark-theme');
-        console.log("Theme changed!");
-      });
-
-
+        // Перепробовал два способа и каждый раз, с изменением свойств newStudent, эти изменения остаются на нем, а оригинальный Student остается неизменным
+        // Если же просто копирую, без изменения свойств newStudent, то два объекта становятся идентичными
     </script>
+
 </body>
 </html>
